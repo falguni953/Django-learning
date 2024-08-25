@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        button:hover{
+            background-color: white;
+            color: white;
+        }
+    </style>
+</head>
+<div class="col py-3">
+  <section style="background-color: #eee;">
+      <div class="container py-5">
+          <div class="row">
+                  <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                      <div class="card">
+                          <img src="{{k.image.url}}"
+                              class="card-img-top" height="300px" alt="Laptop" />
+                          <div class="card-body" style="align-self: center;">
+                              <h5 class="mb-0" style="align-self:center;">{{k.name}}</h5>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                    <div class="card-title">
+                        <div class="card-body" style="align-self: right;">
+                            <h5 class="mb-0" style="align-self: right;">Name-{{k.name}}</h5>
+                        </div>
+                        <div class="card-body" style="align-self: right;">
+                            <h5 class="mb-0" style="align-self: right;">Quantity-{{k.qty}}</h5>
+                        </div>
+                        <div class="card-body" style="align-self: right;">
+                            <h5 class="mb-0" style="align-self: right;">Price-{{k.price}}</h5>
+                        </div>
+                        <div class="card-body" style="align-self: right;">
+                            <h5 class="mb-0" style="align-self: right;">Discription-{{k.discription}}</h5>
+                        </div>
+                        <div>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="number" placeholder="Quantity" name="quantity">
+                        <button class="card-btn" style="background-color: rgb(196, 196, 79); border-radius: 8px; border: 2px solid grey;"  type="submit" name="cart">Add to Cart</button>
+                        <button class="card-btn" style="background-color: rgb(196, 196, 79); border-radius: 8px; border: 2px solid grey;" type="submit" name="buy">Buy Now</button>
+                        </form>
+                        {% if a %}
+                        <script>
+                            alert("{{a}}")
+                        </script>
+                        {% endif %}
+                        {% if s %}
+                        <script>
+                            alert("{{s}}")
+                        </script>
+                        {% endif %}
+                        {% if j %}
+                        <script>
+                            alert("{{j}}")
+                        </script>
+                        {% endif %}
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
+  </section>
+</div>
+{% endblock  %}

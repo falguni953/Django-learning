@@ -1,0 +1,95 @@
+{% load static %}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Minimal login form Responsive Widget Template : W3Layouts</title>
+
+    <!-- Meta tags 
+        -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheet 
+        -->
+    <link rel="stylesheet" href={% static 'css/style.css' %} type="text/css" media="all" />
+
+</head>
+
+<body>
+    <div class="w3l-loginblock signinform">
+        <div class="logo">
+            <a class="brand-logo" href="index.html">Minimal login form</a>
+        </div>
+        <!-- main content -->
+            <div class="row map-content-9">
+                <div class="info-grids">
+                    <form  method="post" class="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-grid">
+                            <div class="input-field" style="float: left;">
+                                <label> Select Category</label>
+                                <!-- <input type="text" name="name" id="email" placeholder="Username" required="" > -->
+                                <select name="category" style="margin: 10px;">
+                                    <option >Select Category</option>
+                                        {% for category in k2  %}
+                                        <option value={{category.id}} name="category">{{category.name}}</option>
+                                        {% endfor %}
+                                </select>
+                            </div>
+                            <div class="input-field" style="clear: both;">
+                                <label>Image</label>
+                                <input type="file" name="image"  placeholder="Email" required="" >
+                            </div>
+                            <div class="input-field">
+                                <label>Name</label>
+                                <input type="text" name="name"  placeholder="Contact No"  required="">
+                            </div>
+                            <div class="input-field">
+                                <label>Quantity</label>
+                                <input type="number" name="qty"  placeholder="Quantity"  required="">
+                            </div>
+                            <div class="input-field">
+                                <label>Price</label>
+                                <input type="text" name="price" placeholder="Price"  required="">
+                            </div>
+                            <div class="input-field">
+                                <label>Discription</label>
+                                <input type="text" name="discription"  placeholder="Discription"  required="">
+                            </div>
+                        </div>
+                        {% comment %} <label class="check-remaind">
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            <p class="remember">Remember Me</p>
+                        </label> {% endcomment %}
+                        <button type="submit" class="btn btn-primary btn-style">Add product</button>
+                    </form>
+                    <div class="input-field">
+                        <label for="addc">Want to add new category?</label>
+                                <a href="{% url 'addcat' %}"><input type="submit" value="Click Here" name="name" id="addc"></a>
+                    </div>
+                </div>
+               
+        <!-- //main content -->
+        <!-- footer -->
+        <!-- footer -->
+    </div>
+    <!-- fontawesome v5-->
+    <script src= {% static 'js/fontawesome.js' %} ></script>
+    {% if k %}
+    <script>
+        alert("{{k}}")
+    </script>
+    {% endif %}
+</body>
+
+</html>

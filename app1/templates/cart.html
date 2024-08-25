@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<head>
+    <style>
+        button:hover{
+            background-color: grey;
+            color: white;
+        }
+        /* .btn-check{
+            float:left;
+        } */
+    </style>
+</head>
+<div class="col py-3">
+  <section style="background-color: #eee;">
+    <div class="card-body" style="text-align: center;">
+        <h3 class="mb-0" style="text-align: center; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Your Cart</h3>
+    </div>
+    {% comment %} <form action="" method="post">
+        {% csrf_token %} {% endcomment %}
+    {% if cartset %}
+    {% comment %} <a href={% url "rselect" %}><input type="submit" name="rselected" value="Remove selected"></a> {% endcomment %}
+    
+        {% comment %} <a href=""><input type="submit" value="Remove Selected" style="margin-bottom: 10px;"></a> {% endcomment %}
+        {% for i in cartset %}
+
+            <div class="row">
+                    <div style="padding-top: 50px;" >
+                        <div >
+                            {% comment %} <input  type="checkbox" id="pro_" name="product" value={{i.id}} style="float: left;" > {% endcomment %}
+                        </div>
+                    </div>
+                
+                <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                    <div class="card" style="margin-left: 50px;" >
+                        <img src="{{i.pi.url}}"
+                            class="card-img-top" height="300px" alt="Laptop" />
+                                <div class="card-body" style="align-self: center;">
+                                    <h5 class="mb-0" style="align-self:center;">{{i.pn}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                                <div class="card-title">
+                                    <div class="card-body" style="align-self: right;">
+                                        <h5 class="mb-0" style="align-self: right; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Name-{{i.pn}}</h5>
+                                    </div>
+                                    <div class="card-body" style="align-self: right;">
+                                        <h5 class="mb-0" style="align-self: right; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Name-{{i.pd}}</h5>
+                                    </div>
+                                    <div class="card-body" style="align-self: right;">
+                                        <h5 class="mb-0" style="align-self: right; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Quantity-{{i.pq}}</h5>
+                                    </div>
+                                    <div class="card-body" style="align-self: right;">
+                                        <h5 class="mb-0" style="align-self: right; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Price-{{i.pp}}</h5>
+                                    </div> 
+                                    <div class="card-body" style="align-self: right;">
+                                       <a href={% url 'cartview' i.id %}> <button class="card-btn" style="background-color: indianred; border-radius: 50%; border: 2px solid grey;" name="plus">+</button></a>  
+                                        <button>QTY:</button>
+                                        <a href={% url 'cartviewr' i.id %}><button class="card-btn" style="background-color: indianred; border-radius: 50%; border: 2px solid grey;">-</button></a>
+                                    </div>
+                                    <div class="rbtn" style="align-self: right;">
+                                        <a href={% url 'remove' i.id %} ><input type="submit" value="Remove" style=" background-color: indianred; margin-top: 6%;"></a>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+        {% endfor %}
+        <div class="rbtn" style="align-self: right;">
+            <a href={% url 'buynow' %}><input type="submit" value="proceed with all" style=" background-color: indianred; margin-top: 6%;"></a>
+        </div>
+    
+    {% else %}
+        <div class="row">
+            <div class="col-md-4 col-lg-4 mb-4 mb-lg-0">
+                <div class="card" style="margin-top: 10px;">
+                    <img src="{{i.ggh.url}}"
+                        class="card-img-top" height="300px" alt="No items in your cart:(" />
+                    <div class="card-body" style="align-self: center;">
+                        <h5 class="mb-0" style="align-self:center;">{{i.pjkjn}}</h5>
+                    </div>
+                </div>
+            </div>
+        
+          <div class="container py-5">
+    {% endif %}
+                                    {% if s %}
+                                    <script>
+                                        alert("{{s}}")
+                                    </script>
+                                    {% endif %}
+            <div class="card-body" style="align-self: right; text-align: center;">
+                <h5 class="mb-0" style="align-self: right; background-color: rgb(118, 0, 0); color: wheat; margin-top: 10px;">Your Cart has total {{tquantity}} products of worth rs.{{subtotal}}</h5>
+            </div>
+        </div>
+  </section>
+</div>
+{% comment %} </form> {% endcomment %}
+{% endblock  %}

@@ -1,0 +1,42 @@
+{% comment %} <h2>second page</h2> {% endcomment %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+              }
+            
+    </style>
+</head>
+<table>
+    <tr>
+      <th>blog</th>
+      <th>headline</th>
+      <th>Data</th>
+      <th>pub_date</th>
+      <th>mod_date</th>
+      <th>authors</th>
+      <th>comments</th>
+      <th>pingbacks</th>
+      <th>rating</th>
+    </tr>
+    {% for i in k %}
+    <tr>
+      <td>{{i.blog}}</td>
+      <td>{{i.headline}}</td>
+      <td>{{i.body_text}}</td>
+      <td>{{i.pub_date}}</td>
+      <td>{{i.mod_date}}</td>
+      <td>{{i.authors}}</td>
+      <td>{{i.number_of_comments}}</td>
+      <td>{{i.number_of_pingbacks}}</td>
+      {% comment %} <td><img src="{{i.image.url}}" width="120"/></td> {% endcomment %}
+      <td>{{i.rating}}</td>
+    </tr>
+    {% endfor %}
+  </table>

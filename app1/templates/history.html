@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for i in proset %}
+        <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                    
+                        <div>
+                            <h6 class="my-0">Order Placed On:{{i.od}}</h6>
+                        </div>
+                    
+                    <div >
+                        <img src="{{i.pi.url}}" alt="" style="height: 200px; width: 200px; margin-top: 20px;">
+                    </div>  
+                    <h6 class="my-0">{{i.pn}}</h6>
+                    <small class="text-muted">Discrption:{{i.pd}}</small>
+                    <div>
+                        <span class="text-muted">Price:{{i.pp}}</span>
+                    </div>
+                    <span class="text-muted">Quantity:{{i.pq}}</span>
+                    <div>
+                        <span class="text-muted">Total Price paid:{{i.pt}}</span>
+                    </div>
+                </div>
+            </li>
+        
+    {% endfor %}    
+{% endblock content %}
